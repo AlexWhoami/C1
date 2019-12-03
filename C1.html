@@ -1,0 +1,75 @@
+<script>
+  var exist = prompt('Enter your number');
+  var arr_numbers = [...exist];
+  
+  var arr_numbers_one = new Array('', 'Одна', 'Две', 'Три', 'Четыре', 'Пять', 'Шесть', 'Семь', 'Восемь', 'Девять', 'Десять', 'Одиннадцать', 'Двенадцать', 'Тринадцать', 'Четырнадцать', 'Пятнадцать', 'Шестнадцать', 'Семнадцать', 'Восемнадцать', 'Девятнадцать');
+  
+  var arr_numbers_ten = new Array('', '', 'Двадцать', 'Тридцать', 'Сорок', 'Пятьдесят', 'Шестьдесят', 'Семьдесят', 'Восемьдесят', 'Девяносто');
+          
+  var arr_numbers_hundred = new Array('', 'Cто', 'Двести', 'Триста', 'Четыреста', 'Пятьсот', 'Шестьсот', 'Семьсот', 'Восемьсот', 'Девятьсот');
+  
+  var i = arr_numbers.length;
+  
+  var result = ''; 
+
+  arr_numbers.reverse();
+  
+  while(i<3){
+      arr_numbers.push('0');
+      i++;
+  }
+ 
+  result += arr_numbers_hundred[arr_numbers[2]];  
+  
+  if(arr_numbers[2] != 0){ 
+      for(var j = 0; j < arr_numbers_ten.length; j++){
+      arr_numbers_ten[j] = (String(arr_numbers_ten[j])).toLowerCase();
+      }
+      for (var j = 0; j < arr_numbers_one.length; j++){
+      arr_numbers_one[j] = (String(arr_numbers_one[j])).toLowerCase();
+      }
+  }
+  else if(arr_numbers[1] != 0 && arr_numbers[1] != 1){
+      for (var j = 0; j < arr_numbers_one.length; j++){
+      arr_numbers_one[j] = (String(arr_numbers_one[j])).toLowerCase();
+      }
+  } 
+  
+  if(arr_numbers[1] >= 2){
+    result += ' ' + arr_numbers_ten[arr_numbers[1]];
+    if(arr_numbers[0] != 0){
+      result += ' ' + arr_numbers_one[arr_numbers[0]];
+    }
+  }
+  
+  if(arr_numbers[1] < 2 && arr_numbers[1] != 0){ 
+    result += ' ' + arr_numbers_one[arr_numbers[1] + arr_numbers[0]];
+  }
+  
+  if(arr_numbers[1] == 0 && arr_numbers[0] != 0){
+    result += ' ' + arr_numbers_one[arr_numbers[0]];
+  }
+  
+  arr_numbers.reverse();
+
+  var kesh = arr_numbers[1] + arr_numbers[2];
+  if(arr_numbers[2] == 1 && arr_numbers[1] != 1){
+    result += ' ' + 'гривна';
+  }
+  
+   else if((arr_numbers[2] == 2 || arr_numbers[2] == 3 || arr_numbers[2] == 4) && arr_numbers[1] != 1){
+    result += ' ' + 'гривны';
+   }
+  
+   else {
+    result += ' ' + 'гривен';
+   }
+  
+   if(exist == 0 || exist.length > 3 || result == undefined){
+    console.log('Unexpected data, try again;)')
+  }
+  else {
+  console.log('', exist);
+  console.log(result);
+  }
+  </script>
